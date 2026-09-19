@@ -1,406 +1,247 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALPA FOOD - Ceker, Bakso Ayam & Minuman Segar</title>
-<style>
-:root{
-  --orange:#ff2600;
-  --orange2:#ff5918;
-  --cream:#fff8ef;
-  --bg:#f6f7fb;
-  --text:#292929;
-  --muted:#777;
-  --white:#fff;
-  --shadow:0 10px 28px rgba(0,0,0,.10);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-button,input{font:inherit}
-button{cursor:pointer;border:0}
-.container{max-width:1200px;margin:auto;padding:0 18px}
-
-/* HEADER */
-header{
-  position:sticky;top:0;z-index:50;
-  background:linear-gradient(135deg,#b30000,#ff1a1a);
-  color:white;box-shadow:0 4px 20px rgba(0,0,0,.14)
-}
-.nav{height:78px;display:flex;align-items:center;gap:18px}
-.logo{font-size:24px;font-weight:900;white-space:nowrap;line-height:1.2}
-.logo span{color:#ffeb3b;text-shadow:0 2px 4px rgba(0,0,0,0.3)}
-.search{
-  flex:1;display:flex;align-items:center;background:white;
-  border-radius:30px;padding:0 18px;height:46px;color:#aaa
-}
-.search input{border:0;outline:0;width:100%;font-size:16px;padding-left:10px}
-.cart-btn{
-  background:#fff;color:#cc0000;border-radius:25px;
-  padding:12px 17px;font-weight:800;white-space:nowrap
-}
-.cart-count{background:#cc0000;color:#fff;border-radius:50%;padding:2px 7px;margin-left:4px}
-
-/* HERO */
-.hero{margin-top:18px;border-radius:25px;overflow:hidden;
-  background:linear-gradient(120deg,#990000,#ff3300);color:#fff;
-  min-height:250px;display:flex;align-items:center;position:relative}
-.hero-content{padding:38px;max-width:650px;z-index:2}
-.hero h1{font-size:clamp(30px,4.5vw,55px);line-height:1.1;font-weight:900;margin-bottom:14px}
-.hero p{font-size:18px;line-height:1.5;margin-bottom:22px}
-.hero .cta{background:#fff;color:#b30000;padding:14px 22px;border-radius:30px;font-weight:900}
-.hero-art{position:absolute;right:35px;font-size:130px;opacity:.28}
-
-/* CATEGORY */
-.section{padding:28px 0}
-.section-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}
-.section-title h2{font-size:22px}
-.section-title p{font-size:13px;color:var(--muted)}
-.categories{display:flex;gap:24px;overflow-x:auto;padding:6px 4px 14px;scrollbar-width:none}
-.categories::-webkit-scrollbar{display:none}
-.cat{min-width:82px;text-align:center;cursor:pointer}
-.cat-img{
-  width:72px;height:72px;margin:auto;border-radius:50%;
-  background:linear-gradient(145deg,#fff,#eee);box-shadow:var(--shadow);
-  display:flex;align-items:center;justify-content:center;font-size:35px;
-  border:3px solid transparent;transition:.2s
-}
-.cat.active .cat-img{border-color:#cc0000;transform:translateY(-3px)}
-.cat-name{font-size:13px;font-weight:700;margin-top:9px;white-space:nowrap}
-
-/* PRODUCTS */
-.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.card{
-  background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 5px 18px rgba(0,0,0,.07);
-  position:relative;transition:.2s
-}
-.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.product-image{
-  height:190px;background:#eee center/cover no-repeat;position:relative;
-}
-.badge{
-  position:absolute;left:10px;top:10px;background:#cc0000;color:#fff;
-  padding:7px 10px;border-radius:20px;font-size:11px;font-weight:900
-}
-.card-body{padding:14px}
-.card h3{font-size:17px;margin-bottom:6px}
-.card p{font-size:13px;color:var(--muted);height:36px}
-.price-row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-.price{font-size:17px;font-weight:900;color:#cc0000}
-.add{
-  width:42px;height:42px;border-radius:50%;background:#cc0000;
-  color:white;font-size:25px;box-shadow:0 4px 10px rgba(204,0,0,.3)
-}
-
-/* PROMO */
-.promo{
-  margin-top:25px;background:#ffe6e6;border-radius:22px;padding:24px;
-  display:flex;justify-content:space-between;align-items:center;gap:20px
-}
-.promo strong{font-size:22px;color:#cc0000}
-.promo button{background:#cc0000;color:white;padding:12px 20px;border-radius:25px;font-weight:800}
-
-/* CART */
-.cart-panel{
-  position:fixed;right:-430px;top:0;width:min(420px,100%);height:100vh;
-  background:#fff;z-index:100;box-shadow:-10px 0 30px rgba(0,0,0,.2);
-  transition:.3s;display:flex;flex-direction:column
-}
-.cart-panel.open{right:0}
-.cart-head{padding:20px;background:#cc0000;color:#fff;display:flex;justify-content:space-between;align-items:center}
-.close{background:rgba(255,255,255,.2);color:#fff;border-radius:50%;width:36px;height:36px}
-.cart-items{flex:1;overflow:auto;padding:18px}
-.cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #eee}
-.cart-item .emoji{width:55px;height:55px;border-radius:12px;background:#ffe6e6;display:grid;place-items:center;font-size:28px}
-.cart-item h4{font-size:14px}
-.qty{display:flex;align-items:center;gap:8px;margin-top:7px}
-.qty button{width:25px;height:25px;border-radius:50%;background:#eee}
-.cart-foot{padding:18px;border-top:1px solid #eee}
-.total{display:flex;justify-content:space-between;font-size:20px;font-weight:900;margin-bottom:14px}
-.checkout{width:100%;padding:15px;border-radius:14px;background:#25d366;color:#fff;font-weight:900;font-size:16px}
-
-/* INFO */
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.info{background:#fff;padding:20px;border-radius:18px;box-shadow:0 4px 15px rgba(0,0,0,.06)}
-.info b{display:block;margin-bottom:6px}.info p{color:var(--muted);font-size:14px;line-height:1.5}
-
-/* FLOATING WA */
-.wa{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;
-background:#25d366;color:#fff;display:grid;place-items:center;font-size:28px;z-index:40;
-box-shadow:0 8px 20px rgba(0,0,0,.2);text-decoration:none}
-
-/* MOBILE */
-@media(max-width:900px){
-  .product-grid{grid-template-columns:repeat(3,1fr)}
-  .hero-art{right:-20px}
-}
-@media(max-width:650px){
-  .nav{height:auto;padding:12px 0;flex-wrap:wrap}
-  .logo{width:100%}.search{order:3;flex-basis:100%}
-  .hero{min-height:300px}.hero-content{padding:28px}.hero-art{font-size:100px;right:10px;bottom:10px}
-  .product-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-  .product-image{height:155px}.card h3{font-size:15px}.price{font-size:16px}
-  .promo{display:block}.promo button{margin-top:14px}
-  .info-grid{grid-template-columns:1fr}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PangPang Delivery - Layanan Antar & Katalog Desa</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#16a34a',
+                        primaryDark: '#15803d',
+                        accent: '#f0fdf4'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
+<body class="bg-gray-50 text-gray-800 font-sans">
 
-<body>
-<header>
-  <div class="container nav">
-    <div class="logo">🔥 ALPA <span>FOOD</span></div>
-    <div class="search">
-      🔎 <input id="search" type="search" placeholder="Cari menu pedas...">
-    </div>
-    <button class="cart-btn" onclick="openCart()">🛒 Keranjang <span id="cartCount" class="cart-count">0</span></button>
-  </div>
-</header>
-
-<main class="container">
-
-  <section class="hero">
-    <div class="hero-content">
-      <h1>ALPA FOOD 🌶️</h1>
-      <p>Pusat Ceker & Bakso Ayam Mercon Terenak. Super pedas, gurih, dan siap diantar ke rumah!</p>
-      <button class="cta" onclick="scrollToMenu()">Lihat Menu →</button>
-    </div>
-    <div class="hero-art">🔥</div>
-  </section>
-
-  <section class="section" id="menu">
-    <div class="section-title">
-      <div>
-        <h2>Kategori Menu</h2>
-        <p>Pilih menu favoritmu</p>
-      </div>
-    </div>
-    <div class="categories">
-      <div class="cat active" onclick="filterCategory('all',this)">
-        <div class="cat-img">🍽️</div><div class="cat-name">Semua</div>
-      </div>
-      <div class="cat" onclick="filterCategory('ceker',this)">
-        <div class="cat-img">🍗</div><div class="cat-name">Ceker</div>
-      </div>
-      <div class="cat" onclick="filterCategory('bakso',this)">
-        <div class="cat-img">🍡</div><div class="cat-name">Bakso</div>
-      </div>
-      <div class="cat" onclick="filterCategory('paket',this)">
-        <div class="cat-img">🍱</div><div class="cat-name">Paket</div>
-      </div>
-      <div class="cat" onclick="filterCategory('minuman',this)">
-        <div class="cat-img">🥤</div><div class="cat-name">Minuman</div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-title">
-      <div>
-        <h2>🔥 Daftar Menu</h2>
-        <p>Pilihan menu mercon & minuman segar</p>
-      </div>
-      <p id="resultCount">8 MENU</p>
-    </div>
-
-    <div id="products" class="product-grid"></div>
-  </section>
-
-  <section class="promo">
-    <div>
-      <strong>🔥 PROMO SPESIAL</strong>
-      <p>Nikmati sensasi pedas nampol Paket Ceker Mercon Komplit bersama keluarga!</p>
-    </div>
-    <button onclick="filterCategory('paket', document.querySelector('.cat:nth-child(4)'))">Lihat Paket</button>
-  </section>
-
-  <section class="section">
-    <div class="section-title">
-      <div><h2>Kenapa Pesan di ALPA FOOD?</h2></div>
-    </div>
-    <div class="info-grid">
-      <div class="info"><b>🌶️ Pedas Mantap</b><p>Diracik dari cabai segar pilihan berkualitas tinggi.</p></div>
-      <div class="info"><b>⚡ Fresh Setiap Hari</b><p>Dimasak dadakan agar kualitas dan rasa tetap terjaga.</p></div>
-      <div class="info"><b>📲 Pesan via WhatsApp</b><p>Praktis, cepat, dan langsung terhubung ke admin.</p></div>
-    </div>
-  </section>
-
-</main>
-
-<a class="wa" id="waFloat" href="#" target="_blank">💬</a>
-
-<aside id="cartPanel" class="cart-panel">
-  <div class="cart-head">
-    <h2>🛒 Keranjang</h2>
-    <button class="close" onclick="closeCart()">✕</button>
-  </div>
-  <div id="cartItems" class="cart-items"></div>
-  <div class="cart-foot">
-    <div class="total"><span>Total</span><span id="total">Rp0</span></div>
-    <button class="checkout" onclick="checkoutWA()">Pesan via WhatsApp</button>
-  </div>
-</aside>
-
-<script>
-// NOMOR WHATSAPP TOKO
-const NOMOR_WA = "6281248012002";
-
-const products = [
-  {
-    id:1, cat:"ceker", name:"Ceker Mercon Original", price:10000, emoji:"🍗",
-    desc:"Ceker empuk dengan bumbu sambal mercon original yang gurih.",
-    image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80"
-  },
-  {
-    id:2, cat:"ceker", name:"Ceker Mercon Super Pedas", price:12000, emoji:"🌶️",
-    desc:"Level pedas ekstra nampol khusus pencinta pedas sejati.",
-    image:"https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=700&q=80"
-  },
-  {
-    id:3, cat:"bakso", name:"Bakso Ayam Mercon", price:10000, emoji:"🍡",
-    desc:"Bakso ayam kenyal berbalut sambal mercon pedas nikmat.",
-    image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80"
-  },
-  {
-    id:4, cat:"bakso", name:"Bakso Ayam Mercon Jumbo", price:15000, emoji:"🔥",
-    desc:"Ukuran lebih besar dan puas dengan sambal mercon melimpah.",
-    image:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
-  },
-  {
-    id:5, cat:"paket", name:"Paket Ceker + Bakso", price:15000, emoji:"🍱",
-    desc:"Kombinasi pas ceker dan bakso ayam pedas dalam satu porsi.",
-    image:"https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=700&q=80"
-  },
-  {
-    id:6, cat:"paket", name:"Paket Ceker Mercon Komplit", price:20000, emoji:"⭐",
-    desc:"Porsi lengkap paling puas dengan sensasi pedas menggoyang lidah.",
-    image:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80"
-  },
-  {
-    id:7, cat:"minuman", name:"Es Teh Manis", price:5000, emoji:"🧋",
-    desc:"Es teh manis segar penawar pedas setelah makan mercon.",
-    image:"https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=700&q=80"
-  },
-  {
-    id:8, cat:"minuman", name:"Es Jeruk", price:7000, emoji:"🍊",
-    desc:"Es jeruk manis segar alami perasan jeruk asli.",
-    image:"https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=700&q=80"
-  }
-];
-
-let cart = [];
-let currentCategory = "all";
-
-function rupiah(n){
-  return new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n);
-}
-
-function renderProducts(){
-  const keyword = document.getElementById("search").value.toLowerCase().trim();
-  const list = products.filter(p =>
-    (currentCategory==="all" || p.cat===currentCategory) &&
-    (p.name.toLowerCase().includes(keyword) || p.desc.toLowerCase().includes(keyword))
-  );
-
-  document.getElementById("resultCount").textContent = list.length + " MENU";
-
-  document.getElementById("products").innerHTML = list.map(p => `
-    <article class="card">
-      <div class="product-image" style="background-image:url('${p.image}')">
-        <div class="badge">🌶️ FAVORIT</div>
-      </div>
-      <div class="card-body">
-        <h3>${p.name}</h3>
-        <p>${p.desc}</p>
-        <div class="price-row">
-          <span class="price">${rupiah(p.price)}</span>
-          <button class="add" onclick="addToCart(${p.id})">+</button>
+    <!-- Header / Navbar -->
+    <header class="bg-primary text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-black tracking-wider">🚀 PANGPANG EXPRESS</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleCart()" class="bg-white text-primary px-4 py-2 rounded-full font-bold shadow hover:bg-accent transition flex items-center space-x-2">
+                    <span>🛒 Keranjang</span>
+                    <span id="cart-count" class="bg-primary text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
         </div>
-      </div>
-    </article>
-  `).join("");
+    </header>
 
-  if(!list.length){
-    document.getElementById("products").innerHTML =
-      '<p style="grid-column:1/-1;text-align:center;padding:35px;color:#777">Menu tidak ditemukan.</p>';
-  }
-}
-
-function filterCategory(cat, el){
-  currentCategory = cat;
-  document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
-  if(el) el.classList.add("active");
-  renderProducts();
-  document.getElementById("menu").scrollIntoView({behavior:"smooth"});
-}
-
-function addToCart(id){
-  const product = products.find(p=>p.id===id);
-  const found = cart.find(x=>x.id===id);
-  if(found) found.qty++;
-  else cart.push({...product,qty:1});
-  renderCart();
-  openCart();
-}
-
-function changeQty(id, amount){
-  const item = cart.find(x=>x.id===id);
-  if(!item) return;
-  item.qty += amount;
-  if(item.qty <= 0) cart = cart.filter(x=>x.id!==id);
-  renderCart();
-}
-
-function renderCart(){
-  const totalQty = cart.reduce((a,b)=>a+b.qty,0);
-  document.getElementById("cartCount").textContent = totalQty;
-
-  if(!cart.length){
-    document.getElementById("cartItems").innerHTML =
-      '<div style="text-align:center;padding:60px 10px;color:#777">🛒<br><br>Keranjang masih kosong.</div>';
-    document.getElementById("total").textContent = "Rp0";
-    return;
-  }
-
-  document.getElementById("cartItems").innerHTML = cart.map(item=>`
-    <div class="cart-item">
-      <div class="emoji">${item.emoji}</div>
-      <div style="flex:1">
-        <h4>${item.name}</h4>
-        <div style="color:#cc0000;font-weight:800">${rupiah(item.price)}</div>
-        <div class="qty">
-          <button onclick="changeQty(${item.id},-1)">−</button>
-          <b>${item.qty}</b>
-          <button onclick="changeQty(${item.id},1)">+</button>
+    <!-- Banner Utama -->
+    <section class="max-w-6xl mx-auto px-4 py-6">
+        <div class="bg-gradient-to-r from-green-600 to-emerald-700 rounded-2xl p-6 md:p-10 text-white shadow-lg flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <span class="bg-white text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Pusat Jasa Antar & Belanja Desa</span>
+                <h1 class="text-3xl md:text-5xl font-extrabold mt-2">Pesan Apa Saja, Diantar Sampai Rumah!</h1>
+                <p class="mt-2 text-white/90 max-w-xl text-sm md:text-base">Melayani pesan-antar makanan (Ceker Mercon, Bakso, dll), sembako, jajanan pasar, hingga jasa kurir lokal antar dusun.</p>
+            </div>
+            <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm text-center border border-white/20">
+                <p class="text-sm font-semibold">Butuh Bantuan Cepat?</p>
+                <a href="https://wa.me/6285198057641?text=Halo%20Admin,%20saya%20mau%20tanya%20jasa%20antar" target="_blank" class="mt-3 inline-block bg-white text-primary font-bold px-6 py-2 rounded-full shadow hover:bg-accent transition">Chat WhatsApp Admin</a>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Kategori Menu / Layanan -->
+    <main class="max-w-6xl mx-auto px-4 pb-16">
+        <h2 class="text-xl font-bold mb-4">Pilih Kategori Layanan</h2>
+        
+        <!-- Filter Kategori -->
+        <div class="flex space-x-3 overflow-x-auto pb-4 mb-6">
+            <button onclick="filterCategory('all')" class="cat-btn px-4 py-2 bg-primary text-white font-semibold rounded-full text-sm shadow whitespace-nowrap">Semua Menu</button>
+            <button onclick="filterCategory('makanan')" class="cat-btn px-4 py-2 bg-white text-gray-700 font-semibold rounded-full text-sm shadow hover:bg-gray-100 whitespace-nowrap">🔥 Makanan & Ceker Mercon</button>
+            <button onclick="filterCategory('sembako')" class="cat-btn px-4 py-2 bg-white text-gray-700 font-semibold rounded-full text-sm shadow hover:bg-gray-100 whitespace-nowrap">🛒 Sembako & Pasar</button>
+            <button onclick="filterCategory('jasa')" class="cat-btn px-4 py-2 bg-white text-gray-700 font-semibold rounded-full text-sm shadow hover:bg-gray-100 whitespace-nowrap">🛵 Jasa Kurir / Titip</button>
+        </div>
+
+        <!-- Daftar Produk / Layanan -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Produk akan dimuat otomatis lewat JavaScript -->
+        </div>
+    </main>
+
+    <!-- Modal Keranjang & Checkout -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex justify-end">
+        <div class="bg-white w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl overflow-y-auto">
+            <div>
+                <div class="flex justify-between items-center border-b pb-4">
+                    <h3 class="text-xl font-bold">Keranjang Belanja Anda</h3>
+                    <button onclick="toggleCart()" class="text-gray-500 hover:text-black font-bold text-xl">✕</button>
+                </div>
+                <div id="cart-items" class="divide-y divide-gray-100 my-4">
+                    <!-- Item keranjang -->
+                </div>
+            </div>
+
+            <div class="border-t pt-4">
+                <div class="flex justify-between mb-4 text-lg font-bold">
+                    <span>Total:</span>
+                    <span id="cart-total" class="text-primary">Rp 0</span>
+                </div>
+
+                <!-- Form Pemesan -->
+                <div class="space-y-3 mb-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Nama Lengkap:</label>
+                        <input type="text" id="buyer-name" placeholder="Contoh: Budi Santoso" class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Alamat Lengkap / Dusun / Patokan:</label>
+                        <textarea id="buyer-address" placeholder="Contoh: Dusun Sumber, RT 02/01 (Rumah cat hijau dekat masjid)" class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl shadow transition text-center block">
+                    Kirim Pesanan via WhatsApp 📱
+                </button>
+            </div>
+        </div>
     </div>
-  `).join("");
 
-  const total = cart.reduce((sum,item)=>sum + item.price*item.qty,0);
-  document.getElementById("total").textContent = rupiah(total);
-}
+    <!-- Script Data Produk & Logika Keranjang -->
+    <script>
+        const products = [
+            { id: 1, name: "Ceker Mercon Super Pedas", category: "makanan", price: 15000, desc: "Ceker empuk bumbu mercon khas pedas gurih.", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+            { id: 2, name: "Bakso Ayam Mercon", category: "makanan", price: 12000, desc: "Bakso ayam isi sambal mercon meledak di mulut.", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&auto=format&fit=crop&q=60" },
+            { id: 3, name: "Es Teh Manis Segar", category: "makanan", price: 4000, desc: "Peredam pedas paling mantap.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500&auto=format&fit=crop&q=60" },
+            { id: 4, name: "Beras Premium 5 Kg", category: "sembako", price: 65000, desc: "Beras pulen kualitas super langsung diantar ke rumah.", img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=60" },
+            { id: 5, name: "Minyak Goreng 1 Liter", category: "sembako", price: 18000, desc: "Minyak goreng kemasan siap pakai.", img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500&auto=format&fit=crop&q=60" },
+            { id: 6, name: "Jasa Titip Belanja Pasar", category: "jasa", price: 10000, desc: "Ongkos jasa titip belanja kebutuhan pasar tradisional.", img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=60" }
+        ];
 
-function openCart(){document.getElementById("cartPanel").classList.add("open")}
-function closeCart(){document.getElementById("cartPanel").classList.remove("open")}
-function scrollToMenu(){document.getElementById("menu").scrollIntoView({behavior:"smooth"})}
+        let cart = [];
 
-function checkoutWA(){
-  if(!cart.length){alert("Keranjang masih kosong.");return;}
-  let text = "Halo ALPA FOOD, saya mau pesan:%0A%0A";
-  cart.forEach(item=>{
-    text += `• ${item.name} x${item.qty} = ${rupiah(item.price*item.qty)}%0A`;
-  });
-  const total = cart.reduce((sum,item)=>sum + item.price*item.qty,0);
-  text += `%0ATotal: ${rupiah(total)}%0A%0ANama:%0AAlamat:%0ACatatan:`;
-  window.open(`https://wa.me/${NOMOR_WA}?text=${text}`,"_blank");
-}
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            
+            filtered.forEach(p => {
+                grid.innerHTML += `
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <img src="${p.img}" alt="${p.name}" class="w-full h-40 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg mb-1">${p.name}</h3>
+                                <p class="text-gray-500 text-xs mb-3">${p.desc}</p>
+                                <span class="text-primary font-extrabold text-lg">Rp ${p.price.toLocaleString('id-ID')}</span>
+                            </div>
+                        </div>
+                        <div class="p-4 pt-0">
+                            <button onclick="addToCart(${p.id})" class="w-full bg-primary hover:bg-primaryDark text-white font-bold py-2 rounded-xl transition text-sm">
+                                + Tambah ke Pesanan
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
 
-document.getElementById("search").addEventListener("input",renderProducts);
-document.getElementById("waFloat").href = `https://wa.me/${NOMOR_WA}?text=Halo%20ALPA%20FOOD,%20saya%20mau%20pesan.`;
+        function filterCategory(category) {
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-white');
+                btn.classList.add('bg-white', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-white', 'text-gray-700');
+            event.target.classList.add('bg-primary', 'text-white');
+            renderProducts(category);
+        }
 
-renderProducts();
-renderCart();
-</script>
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            updateCartUI();
+            alert(`Berhasil menambahkan ${product.name} ke keranjang!`);
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+            
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price * item.qty;
+                container.innerHTML += `
+                    <div class="py-3 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-semibold text-sm">${item.name}</h4>
+                            <p class="text-xs text-gray-500">Rp ${item.price.toLocaleString('id-ID')} x ${item.qty}</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="changeQty(${item.id}, -1)" class="bg-gray-200 px-2 py-1 rounded text-xs font-bold">-</button>
+                            <span class="text-sm font-bold">${item.qty}</span>
+                            <button onclick="changeQty(${item.id}, 1)" class="bg-gray-200 px-2 py-1 rounded text-xs font-bold">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('cart-total').innerText = `Rp ${total.toLocaleString('id-ID')}`;
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+                updateCartUI();
+            }
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function checkoutWhatsApp() {
+            const name = document.getElementById('buyer-name').value.trim();
+            const address = document.getElementById('buyer-address').value.trim();
+
+            if (!name || !address) {
+                alert('Mohon isi Nama dan Alamat lengkap Anda terlebih dahulu!');
+                return;
+            }
+
+            if (cart.length === 0) {
+                alert('Keranjang belanja masih kosong!');
+                return;
+            }
+
+            let text = `Halo Admin PangPang Express, saya mau memesan:%0A%0A`;
+            let total = 0;
+            cart.forEach((item, index) => {
+                let subtotal = item.price * item.qty;
+                total += subtotal;
+                text += `${index + 1}. ${item.name} (${item.qty}x) - Rp ${subtotal.toLocaleString('id-ID')}%0A`;
+            });
+            text += `%0A*Total Belanja: Rp ${total.toLocaleString('id-ID')}*%0A%0A`;
+            text += `*Nama Pemesan:* ${name}%0A`;
+            text += `*Alamat Pengantaran:* ${address}%0A%0A`;
+            text += `Mohon segera diproses ya, terima kasih!`;
+
+            const whatsappNumber = "6285198057641"; 
+            window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+        }
+
+        renderProducts('all');
+    </script>
 </body>
 </html>
