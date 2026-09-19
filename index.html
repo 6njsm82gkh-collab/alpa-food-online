@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PangPang Delivery - Layanan Antar & Katalog Desa</title>
+    <title>ALPA FOOD - Layanan Pesan-Antar & Kuliner Eksklusif Desa</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -11,112 +11,195 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#16a34a',
-                        primaryDark: '#15803d',
-                        accent: '#f0fdf4'
+                        primary: '#059669',
+                        primaryDark: '#047857',
+                        accent: '#ecfdf5',
+                        darkText: '#1f2937'
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-slate-50 text-darkText font-sans pb-28">
 
-    <!-- Header / Navbar -->
-    <header class="bg-primary text-white sticky top-0 z-50 shadow-md">
+    <!-- Header / Navbar Premium -->
+    <header class="bg-white/90 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50 shadow-xs">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <span class="text-2xl font-black tracking-wider">🚀 PANGPANG EXPRESS</span>
+                <span class="bg-primary text-white p-2 rounded-xl text-lg font-black shadow-sm">🌿</span>
+                <div>
+                    <h1 class="text-xl font-black tracking-tight text-primary">ALPA FOOD</h1>
+                    <p class="text-[10px] text-slate-400 font-medium tracking-widest uppercase">Express Delivery & Kuliner</p>
+                </div>
             </div>
-            <div class="flex items-center space-x-4">
-                <button onclick="toggleCart()" class="bg-white text-primary px-4 py-2 rounded-full font-bold shadow hover:bg-accent transition flex items-center space-x-2">
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleCart()" class="bg-primary hover:bg-primaryDark text-white px-5 py-2.5 rounded-full font-bold shadow-md shadow-green-600/20 transition-all flex items-center space-x-2 text-sm">
                     <span>🛒 Keranjang</span>
-                    <span id="cart-count" class="bg-primary text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    <span id="cart-count" class="bg-white text-primary text-xs font-black w-5 h-5 rounded-full flex items-center justify-center shadow-xs">0</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Banner Utama -->
-    <section class="max-w-6xl mx-auto px-4 py-6">
-        <div class="bg-gradient-to-r from-green-600 to-emerald-700 rounded-2xl p-6 md:p-10 text-white shadow-lg flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-6 md:mb-0">
-                <span class="bg-white text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Pusat Jasa Antar & Belanja Desa</span>
-                <h1 class="text-3xl md:text-5xl font-extrabold mt-2">Pesan Apa Saja, Diantar Sampai Rumah!</h1>
-                <p class="mt-2 text-white/90 max-w-xl text-sm md:text-base">Melayani pesan-antar makanan (Ceker Mercon, Bakso, dll), sembako, jajanan pasar, hingga jasa kurir lokal antar dusun.</p>
+    <!-- Banner Eksklusif -->
+    <section class="max-w-6xl mx-auto px-4 my-6">
+        <div class="relative overflow-hidden bg-gradient-to-br from-emerald-800 via-emerald-700 to-green-900 rounded-3xl p-6 md:p-12 text-white shadow-xl flex flex-col md:flex-row justify-between items-center">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="relative z-10 mb-6 md:mb-0 max-w-xl">
+                <span class="bg-emerald-500/30 border border-emerald-400/30 text-emerald-200 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider backdrop-blur-md">ALPA FOOD Official Store</span>
+                <h2 class="text-3xl md:text-5xl font-black mt-3 tracking-tight leading-tight">Pesan Kuliner & Sembako di ALPA FOOD.</h2>
+                <p class="mt-3 text-emerald-100 text-sm md:text-base font-light leading-relaxed">Menghubungkan cita rasa terbaik dari dapur lokal langsung ke depan pintu rumah Anda dengan ongkir transparan.</p>
             </div>
-            <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm text-center border border-white/20">
-                <p class="text-sm font-semibold">Butuh Bantuan Cepat?</p>
-                <a href="https://wa.me/6285198057641?text=Halo%20Admin,%20saya%20mau%20tanya%20jasa%20antar" target="_blank" class="mt-3 inline-block bg-white text-primary font-bold px-6 py-2 rounded-full shadow hover:bg-accent transition">Chat WhatsApp Admin</a>
+            <div class="relative z-10 bg-white/10 p-5 rounded-2xl backdrop-blur-md text-center border border-white/20 shadow-inner w-full md:w-auto">
+                <p class="text-xs text-emerald-100 font-semibold mb-1">Butuh Bantuan Cepat?</p>
+                <a href="https://wa.me/6285198057641?text=Halo%20Admin%20ALPA%20FOOD,%20saya%20mau%20tanya..." target="_blank" class="inline-block bg-white text-emerald-900 font-bold text-sm px-6 py-2.5 rounded-xl shadow hover:bg-emerald-50 transition-all">Chat WhatsApp ALPA FOOD</a>
             </div>
         </div>
     </section>
 
-    <!-- Kategori Menu / Layanan -->
-    <main class="max-w-6xl mx-auto px-4 pb-16">
-        <h2 class="text-xl font-bold mb-4">Pilih Kategori Layanan</h2>
-        
-        <!-- Filter Kategori -->
-        <div class="flex space-x-3 overflow-x-auto pb-4 mb-6">
-            <button onclick="filterCategory('all')" class="cat-btn px-4 py-2 bg-primary text-white font-semibold rounded-full text-sm shadow whitespace-nowrap">Semua Menu</button>
-            <button onclick="filterCategory('makanan')" class="cat-btn px-4 py-2 bg-white text-gray-700 font-semibold rounded-full text-sm shadow hover:bg-gray-100 whitespace-nowrap">🔥 Makanan & Ceker Mercon</button>
-            <button onclick="filterCategory('sembako')" class="cat-btn px-4 py-2 bg-white text-gray-700 font-semibold rounded-full text-sm shadow hover:bg-gray-100 whitespace-nowrap">🛒 Sembako & Pasar</button>
-            <button onclick="filterCategory('jasa')" class="cat-btn px-4 py-2 bg-white text-gray-700 font-semibold rounded-full text-sm shadow hover:bg-gray-100 whitespace-nowrap">🛵 Jasa Kurir / Titip</button>
+    <!-- Menu Utama & Katalog -->
+    <main class="max-w-6xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+            <div>
+                <h3 class="text-2xl font-black tracking-tight text-slate-800">Katalog Pilihan ALPA FOOD</h3>
+                <p class="text-xs text-slate-500">Pilih menu favoritmu dari mitra toko & warung terpercaya</p>
+            </div>
+            
+            <!-- Filter Kategori -->
+            <div class="flex space-x-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+                <button onclick="filterCategory('all')" class="cat-btn px-4 py-2 bg-primary text-white font-bold rounded-xl text-xs shadow-sm whitespace-nowrap transition-all">Semua Menu</button>
+                <button onclick="filterCategory('makanan')" class="cat-btn px-4 py-2 bg-white text-slate-600 font-semibold rounded-xl text-xs border border-slate-200 hover:bg-slate-100 whitespace-nowrap transition-all">🔥 Ceker & Kuliner Pedas</button>
+                <button onclick="filterCategory('sembako')" class="cat-btn px-4 py-2 bg-white text-slate-600 font-semibold rounded-xl text-xs border border-slate-200 hover:bg-slate-100 whitespace-nowrap transition-all">🛒 Sembako & Pasar</button>
+                <button onclick="filterCategory('jasa')" class="cat-btn px-4 py-2 bg-white text-slate-600 font-semibold rounded-xl text-xs border border-slate-200 hover:bg-slate-100 whitespace-nowrap transition-all">🛵 Jasa Kurir ALPA</button>
+            </div>
         </div>
 
-        <!-- Daftar Produk / Layanan -->
+        <!-- Daftar Produk Grid -->
         <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <!-- Produk akan dimuat otomatis lewat JavaScript -->
+            <!-- Render via JS -->
         </div>
     </main>
 
-    <!-- Modal Keranjang & Checkout -->
-    <div id="cart-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex justify-end">
+    <!-- Modal Keranjang & Checkout Premium -->
+    <div id="cart-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex justify-end transition-all">
         <div class="bg-white w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl overflow-y-auto">
             <div>
-                <div class="flex justify-between items-center border-b pb-4">
-                    <h3 class="text-xl font-bold">Keranjang Belanja Anda</h3>
-                    <button onclick="toggleCart()" class="text-gray-500 hover:text-black font-bold text-xl">✕</button>
+                <div class="flex justify-between items-center border-b border-slate-100 pb-4">
+                    <div>
+                        <h3 class="text-lg font-black text-slate-800">Keranjang ALPA FOOD</h3>
+                        <p class="text-xs text-slate-400">Periksa kembali pesanan Anda</p>
+                    </div>
+                    <button onclick="toggleCart()" class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-200 font-bold transition-all">✕</button>
                 </div>
-                <div id="cart-items" class="divide-y divide-gray-100 my-4">
-                    <!-- Item keranjang -->
+                <div id="cart-items" class="divide-y divide-slate-100 my-4 max-h-56 overflow-y-auto pr-1">
+                    <!-- Item -->
                 </div>
             </div>
 
-            <div class="border-t pt-4">
-                <div class="flex justify-between mb-4 text-lg font-bold">
-                    <span>Total:</span>
-                    <span id="cart-total" class="text-primary">Rp 0</span>
+            <div class="border-t border-slate-100 pt-4 space-y-4">
+                <!-- Pilihan Wilayah / Dusun -->
+                <div class="bg-emerald-50/50 p-3.5 rounded-2xl border border-emerald-100">
+                    <label class="block text-xs font-bold text-emerald-900 mb-1.5">📍 Pilih Wilayah Tujuan (Ongkir Otomatis):</label>
+                    <select id="delivery-zone" onchange="updateCartUI()" class="w-full border border-emerald-200 rounded-xl px-3 py-2 text-xs font-medium bg-white focus:outline-none focus:ring-2 focus:ring-primary">
+                        <option value="0">-- Pilih Wilayah / Dusun --</option>
+                        <option value="5000">Salimpat (Rp 5.000)</option>
+                        <option value="7000">Aie Karuah (Rp 7.000)</option>
+                        <option value="10000">Taratak Baru (Rp 10.000)</option>
+                        <option value="12000">Tanjung Balik (Rp 12.000)</option>
+                    </select>
                 </div>
 
-                <!-- Form Pemesan -->
-                <div class="space-y-3 mb-4">
+                <!-- Form Identitas -->
+                <div class="space-y-3">
                     <div>
-                        <label class="block text-xs font-semibold text-gray-600 mb-1">Nama Lengkap:</label>
-                        <input type="text" id="buyer-name" placeholder="Contoh: Budi Santoso" class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary">
+                        <label class="block text-[11px] font-bold text-slate-600 mb-1 uppercase tracking-wider">Nama Lengkap Pemesan:</label>
+                        <input type="text" id="buyer-name" placeholder="Contoh: Kak Rina" class="w-full border border-slate-200 rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-primary">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-gray-600 mb-1">Alamat Lengkap / Dusun / Patokan:</label>
-                        <textarea id="buyer-address" placeholder="Contoh: Dusun Sumber, RT 02/01 (Rumah cat hijau dekat masjid)" class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary" rows="2"></textarea>
+                        <label class="block text-[11px] font-bold text-slate-600 mb-1 uppercase tracking-wider">Nomor WhatsApp Aktif:</label>
+                        <input type="tel" id="buyer-phone" placeholder="Contoh: 08123456789" class="w-full border border-slate-200 rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-600 mb-1 uppercase tracking-wider">Detail Alamat / Patokan Rumah:</label>
+                        <textarea id="buyer-address" placeholder="Contoh: Dekat mushola Al-Huda, rumah pagar kayu warna coklat" class="w-full border border-slate-200 rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-primary" rows="2"></textarea>
                     </div>
                 </div>
 
-                <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl shadow transition text-center block">
-                    Kirim Pesanan via WhatsApp 📱
+                <!-- Ringkasan Biaya -->
+                <div class="bg-slate-100 p-3.5 rounded-2xl space-y-1.5 text-xs">
+                    <div class="flex justify-between text-slate-600"><span>Subtotal Produk:</span> <span id="subtotal-price" class="font-semibold">Rp 0</span></div>
+                    <div class="flex justify-between text-slate-600"><span>Ongkos Kirim:</span> <span id="ongkir-price" class="font-semibold">Rp 0</span></div>
+                    <div class="flex justify-between font-black text-sm border-t border-slate-200 pt-2 text-primary">
+                        <span>Total Pembayaran:</span>
+                        <span id="cart-total">Rp 0</span>
+                    </div>
+                </div>
+
+                <button onclick="checkoutWhatsApp()" class="w-full bg-primary hover:bg-primaryDark text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-green-600/30 transition-all text-center block text-sm">
+                    Kirim Pesanan ke WhatsApp ALPA FOOD 📱
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Script Data Produk & Logika Keranjang -->
+    <!-- Script Logika -->
     <script>
         const products = [
-            { id: 1, name: "Ceker Mercon Super Pedas", category: "makanan", price: 15000, desc: "Ceker empuk bumbu mercon khas pedas gurih.", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
-            { id: 2, name: "Bakso Ayam Mercon", category: "makanan", price: 12000, desc: "Bakso ayam isi sambal mercon meledak di mulut.", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&auto=format&fit=crop&q=60" },
-            { id: 3, name: "Es Teh Manis Segar", category: "makanan", price: 4000, desc: "Peredam pedas paling mantap.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500&auto=format&fit=crop&q=60" },
-            { id: 4, name: "Beras Premium 5 Kg", category: "sembako", price: 65000, desc: "Beras pulen kualitas super langsung diantar ke rumah.", img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=60" },
-            { id: 5, name: "Minyak Goreng 1 Liter", category: "sembako", price: 18000, desc: "Minyak goreng kemasan siap pakai.", img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500&auto=format&fit=crop&q=60" },
-            { id: 6, name: "Jasa Titip Belanja Pasar", category: "jasa", price: 10000, desc: "Ongkos jasa titip belanja kebutuhan pasar tradisional.", img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=60" }
+            { 
+                id: 1, 
+                name: "Ceker Mercon Super Pedas", 
+                category: "makanan", 
+                price: 15000, 
+                store: "Dapur Ceker Teh Nia", 
+                desc: "Ceker empuk pilihan dimasak dengan bumbu mercon cabai segar pilihan.", 
+                img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 2, 
+                name: "Bakso Urat Mercon Beranak", 
+                category: "makanan", 
+                price: 18000, 
+                store: "Bakso Urat Barokah Salimpat", 
+                desc: "Bakso daging sapi asli dengan sensasi isian sambal pedas meledak.", 
+                img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 3, 
+                name: "Es Teh Manis Jumbo Segar", 
+                category: "makanan", 
+                price: 5000, 
+                store: "Kedai Berkah Aie Karuah", 
+                desc: "Peredam pedas paling pas, teh melati asli dengan es melimpah.", 
+                img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 4, 
+                name: "Beras Premium Anak Daro 5 Kg", 
+                category: "sembako", 
+                price: 75000, 
+                store: "Toko Sembako Mak Itam", 
+                desc: "Beras kualitas premium super pulen diantar langsung sampai dapur.", 
+                img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 5, 
+                name: "Minyak Goreng Sania 1 Liter", 
+                category: "sembako", 
+                price: 19000, 
+                store: "Toko Sembako Mak Itam", 
+                desc: "Minyak goreng kemasan higienis jernih berkualitas tinggi.", 
+                img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 6, 
+                name: "Jasa Titip Belanja Pasar Tradisional", 
+                category: "jasa", 
+                price: 12000, 
+                store: "ALPA FOOD Express Kurir", 
+                desc: "Jasa kurir profesional untuk belanja kebutuhan harian Anda di pasar.", 
+                img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=80" 
+            }
         ];
 
         let cart = [];
@@ -124,23 +207,27 @@
         function renderProducts(filter = 'all') {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
-            
             const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
             
             filtered.forEach(p => {
                 grid.innerHTML += `
-                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
+                    <div class="bg-white rounded-3xl shadow-xs border border-slate-100 overflow-hidden flex flex-col justify-between hover:shadow-lg transition-all group">
                         <div>
-                            <img src="${p.img}" alt="${p.name}" class="w-full h-40 object-cover">
-                            <div class="p-4">
-                                <h3 class="font-bold text-lg mb-1">${p.name}</h3>
-                                <p class="text-gray-500 text-xs mb-3">${p.desc}</p>
-                                <span class="text-primary font-extrabold text-lg">Rp ${p.price.toLocaleString('id-ID')}</span>
+                            <div class="relative overflow-hidden h-48">
+                                <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-800 text-[10px] font-bold px-3 py-1 rounded-full shadow-xs">
+                                    🏪 ${p.store}
+                                </span>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-bold text-base text-slate-800 mb-1">${p.name}</h4>
+                                <p class="text-slate-400 text-xs mb-4 line-clamp-2 leading-relaxed">${p.desc}</p>
+                                <span class="text-primary font-black text-lg">Rp ${p.price.toLocaleString('id-ID')}</span>
                             </div>
                         </div>
-                        <div class="p-4 pt-0">
-                            <button onclick="addToCart(${p.id})" class="w-full bg-primary hover:bg-primaryDark text-white font-bold py-2 rounded-xl transition text-sm">
-                                + Tambah ke Pesanan
+                        <div class="p-5 pt-0">
+                            <button onclick="addToCart(${p.id})" class="w-full bg-slate-100 hover:bg-primary hover:text-white text-slate-700 font-bold py-2.5 rounded-2xl transition-all text-xs flex items-center justify-center space-x-1">
+                                <span>+ Tambah ke Keranjang</span>
                             </button>
                         </div>
                     </div>
@@ -150,11 +237,11 @@
 
         function filterCategory(category) {
             document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.remove('bg-primary', 'text-white');
-                btn.classList.add('bg-white', 'text-gray-700');
+                btn.classList.remove('bg-primary', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
             });
-            event.target.classList.remove('bg-white', 'text-gray-700');
-            event.target.classList.add('bg-primary', 'text-white');
+            event.target.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            event.target.classList.add('bg-primary', 'text-white', 'shadow-sm');
             renderProducts(category);
         }
 
@@ -167,7 +254,7 @@
                 cart.push({ ...product, qty: 1 });
             }
             updateCartUI();
-            alert(`Berhasil menambahkan ${product.name} ke keranjang!`);
+            alert(`Berhasil menambahkan ${product.name} ke keranjang ALPA FOOD!`);
         }
 
         function updateCartUI() {
@@ -175,23 +262,30 @@
             const container = document.getElementById('cart-items');
             container.innerHTML = '';
             
-            let total = 0;
+            let subtotal = 0;
             cart.forEach(item => {
-                total += item.price * item.qty;
+                subtotal += item.price * item.qty;
                 container.innerHTML += `
                     <div class="py-3 flex justify-between items-center">
                         <div>
-                            <h4 class="font-semibold text-sm">${item.name}</h4>
-                            <p class="text-xs text-gray-500">Rp ${item.price.toLocaleString('id-ID')} x ${item.qty}</p>
+                            <h5 class="font-bold text-xs text-slate-800">${item.name}</h5>
+                            <p class="text-[10px] text-slate-400">Rp ${item.price.toLocaleString('id-ID')} x ${item.qty} • <span class="text-emerald-600">${item.store}</span></p>
                         </div>
                         <div class="flex items-center space-x-2">
-                            <button onclick="changeQty(${item.id}, -1)" class="bg-gray-200 px-2 py-1 rounded text-xs font-bold">-</button>
-                            <span class="text-sm font-bold">${item.qty}</span>
-                            <button onclick="changeQty(${item.id}, 1)" class="bg-gray-200 px-2 py-1 rounded text-xs font-bold">+</button>
+                            <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 bg-slate-100 rounded-lg text-xs font-bold flex items-center justify-center hover:bg-slate-200">-</button>
+                            <span class="text-xs font-black">${item.qty}</span>
+                            <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 bg-slate-100 rounded-lg text-xs font-bold flex items-center justify-center hover:bg-slate-200">+</button>
                         </div>
                     </div>
                 `;
             });
+
+            const zoneSelect = document.getElementById('delivery-zone');
+            const ongkir = parseInt(zoneSelect.value) || 0;
+            const total = subtotal + (subtotal > 0 ? ongkir : 0);
+
+            document.getElementById('subtotal-price').innerText = `Rp ${subtotal.toLocaleString('id-ID')}`;
+            document.getElementById('ongkir-price').innerText = `Rp ${ongkir.toLocaleString('id-ID')}`;
             document.getElementById('cart-total').innerText = `Rp ${total.toLocaleString('id-ID')}`;
         }
 
@@ -213,10 +307,17 @@
 
         function checkoutWhatsApp() {
             const name = document.getElementById('buyer-name').value.trim();
+            const phone = document.getElementById('buyer-phone').value.trim();
             const address = document.getElementById('buyer-address').value.trim();
+            const zoneSelect = document.getElementById('delivery-zone');
+            
+            if (!name || !phone || !address) {
+                alert('Mohon lengkapi Nama, Nomor WhatsApp, dan Detail Alamat Anda!');
+                return;
+            }
 
-            if (!name || !address) {
-                alert('Mohon isi Nama dan Alamat lengkap Anda terlebih dahulu!');
+            if (zoneSelect.value === "0") {
+                alert('Mohon pilih Wilayah/Dusun tujuan pengantaran terlebih dahulu!');
                 return;
             }
 
@@ -225,17 +326,29 @@
                 return;
             }
 
-            let text = `Halo Admin PangPang Express, saya mau memesan:%0A%0A`;
-            let total = 0;
+            const zoneText = zoneSelect.options[zoneSelect.selectedIndex].text;
+            const ongkir = parseInt(zoneSelect.value);
+
+            let text = `Halo Admin ALPA FOOD, saya ingin memesan:%0A%0A`;
+            let subtotal = 0;
             cart.forEach((item, index) => {
-                let subtotal = item.price * item.qty;
-                total += subtotal;
-                text += `${index + 1}. ${item.name} (${item.qty}x) - Rp ${subtotal.toLocaleString('id-ID')}%0A`;
+                let itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+                text += `${index + 1}. *${item.name}* (${item.qty}x) - Rp ${itemTotal.toLocaleString('id-ID')}%0A   _(Toko: ${item.store})_%0A`;
             });
-            text += `%0A*Total Belanja: Rp ${total.toLocaleString('id-ID')}*%0A%0A`;
-            text += `*Nama Pemesan:* ${name}%0A`;
-            text += `*Alamat Pengantaran:* ${address}%0A%0A`;
-            text += `Mohon segera diproses ya, terima kasih!`;
+
+            let total = subtotal + ongkir;
+
+            text += `%0A--------------------------------%0A`;
+            text += `*Subtotal Produk:* Rp ${subtotal.toLocaleString('id-ID')}%0A`;
+            text += `*Wilayah Tujuan:* ${zoneText} (Rp ${ongkir.toLocaleString('id-ID')})%0A`;
+            text += `*TOTAL PEMBAYARAN:* *Rp ${total.toLocaleString('id-ID')}*%0A`;
+            text += `--------------------------------%0A%0A`;
+            text += `*DATA PEMESAN:*%0A`;
+            text += `• Nama: ${name}%0A`;
+            text += `• No. WhatsApp: ${phone}%0A`;
+            text += `• Alamat/Patokan: ${address}%0A%0A`;
+            text += `Mohon segera diproses ya, terima kasih ALPA FOOD!`;
 
             const whatsappNumber = "6285198057641"; 
             window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
